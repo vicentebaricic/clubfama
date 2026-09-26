@@ -1,6 +1,6 @@
 // EDITAR: número de WhatsApp (código país + número, sin + ni espacios) e Instagram.
 const CONFIG = {
-  whatsapp: "56900000000",
+  whatsapp: "56948869995",
   instagram: "https://www.instagram.com/clubfama/",
 };
 
