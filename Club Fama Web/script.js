@@ -60,6 +60,7 @@ document.addEventListener("keydown", (e) => { if (e.key === "Escape") setMenu(fa
 (() => {
   const quotes = [...document.querySelectorAll(".quote")];
   const dots = document.querySelector(".dots");
+  if (!quotes.length || !dots) return;
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   let i = 0;
   let timer;
