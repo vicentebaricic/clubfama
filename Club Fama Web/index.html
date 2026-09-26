@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Club Fama · Dance & Fitness en Chicureo</title>
+  <meta name="description" content="Club Fama Dance & Fitness: baile, entrenamiento funcional y fuerza en Chicureo, Colina. Escríbenos por WhatsApp y agenda tu primera clase.">
+  <meta name="theme-color" content="#0b0b0d">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/hero.webp">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Saltar al contenido</a>
+
+  <header class="nav" id="top">
+    <div class="wrap nav__inner">
+      <a href="#top" class="nav__logo" aria-label="Club Fama, inicio">
+        <img src="assets/logo-blanco.png" alt="Club Fama Dance & Fitness" width="140" height="62">
+      </a>
+      <button class="nav__toggle" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
+        <span></span><span></span>
+      </button>
+      <nav id="menu" class="nav__menu" aria-label="Principal">
+        <a href="#clases">Clases</a>
+        <a href="#horarios">Horarios</a>
+        <a href="#planes">Planes</a>
+        <a href="#equipo">Equipo</a>
+        <a href="#ubicacion">Ubicación</a>
+        <a class="btn btn--sm js-wa" href="#" data-msg="Hola Club Fama! Quiero información.">WhatsApp</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero">
+      <img class="hero__bg" src="assets/hero.webp" alt="" width="1400" height="2100">
+      <div class="hero__shade" aria-hidden="true"></div>
+      <div class="wrap hero__inner">
+        <p class="eyebrow">Dance &amp; Fitness · Chicureo</p>
+        <h1 class="hero__title">Muévete.<br>Brilla.<br><span>Hazte Fama.</span></h1>
+        <p class="hero__lead">Baile, fuerza y entrenamiento funcional en un solo club. Clases guiadas, buena energía y una comunidad que te empuja a volver.</p>
+        <div class="hero__actions">
+          <a class="btn js-wa" href="#" data-msg="Hola! Quiero agendar mi primera clase en Club Fama.">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><use href="#i-wa"/></svg>
+            Agenda tu primera clase
+          </a>
+          <a class="btn btn--ghost" href="#clases">Ver clases</a>
+        </div>
+      </div>
+      <ul class="hero__social wrap" aria-label="Redes sociales">
+        <li><a class="js-ig" href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ig"/></svg></a></li>
+        <li><a class="js-wa" href="#" data-msg="Hola Club Fama!" aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-wa"/></svg></a></li>
+      </ul>
+    </section>
+
+    <!-- CÓMO EMPEZAR -->
+    <section class="section steps">
+      <div class="wrap steps__grid">
+        <div>
+          <p class="eyebrow eyebrow--dark">Cómo empezar</p>
+          <h2 class="h2">Tu primera clase, en tres pasos simples</h2>
+          <p class="muted">No necesitas experiencia ni estar "en forma" para partir. Te ayudamos a elegir la clase y el plan que calzan contigo.</p>
+        </div>
+        <ol class="steps__list">
+          <li class="step">
+            <span class="step__n">01</span>
+            <div><h3>Escríbenos por WhatsApp</h3><p>Cuéntanos qué te gusta y tus objetivos.</p></div>
+          </li>
+          <li class="step step--hi">
+            <span class="step__n">02</span>
+            <div><h3>Ven a tu clase de prueba</h3><p>Conoce el club, los profes y la comunidad.</p></div>
+          </li>
+          <li class="step">
+            <span class="step__n">03</span>
+            <div><h3>Elige tu plan</h3><p>Entrena a tu ritmo con el plan que prefieras.</p></div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- CLASES — EDITAR: reemplazar por las disciplinas reales -->
+    <section class="section clases" id="clases">
+      <div class="wrap">
+        <div class="head">
+          <p class="eyebrow eyebrow--dark">Clases</p>
+          <h2 class="h2">Baila, entrena y encuentra tu ritmo</h2>
+        </div>
+        <div class="cards">
+          <article class="card card--img" style="--img:url(assets/espacio-2.webp)">
+            <span class="tag">Baile</span><h3>Zumba</h3><p>Cardio con ritmos latinos. Sudas, te ríes y no miras el reloj.</p>
+          </article>
+          <article class="card card--img" style="--img:url(assets/fuerza.webp)">
+            <span class="tag">Fuerza</span><h3>Entrenamiento de fuerza</h3><p>Técnica guiada con barras, mancuernas y máquinas.</p>
+          </article>
+          <article class="card card--img" style="--img:url(assets/espacio-1.webp)">
+            <span class="tag">Funcional</span><h3>Funcional / HIIT</h3><p>Circuitos intensos para resistencia y tonificación.</p>
+          </article>
+          <article class="card"><span class="tag">Baile</span><h3>Baile urbano</h3><p>Coreografías de reggaetón, dancehall y hip hop.</p></article>
+          <article class="card"><span class="tag">Movilidad</span><h3>Pilates mat</h3><p>Core, postura y control en clases de grupo reducido.</p></article>
+          <article class="card"><span class="tag">Movilidad</span><h3>Stretching</h3><p>Flexibilidad y recuperación para complementar tu semana.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- HORARIOS -->
+    <section class="section horarios" id="horarios">
+      <div class="wrap horarios__grid">
+        <div>
+          <p class="eyebrow">Horarios</p>
+          <h2 class="h2 h2--light">Abierto todos los días</h2>
+          <p class="muted muted--light">Consulta por WhatsApp el horario de cada clase de la semana.</p>
+          <p class="today" id="today" aria-live="polite"></p>
+        </div>
+        <table class="hours" aria-label="Horario de atención">
+          <tbody>
+            <tr data-day="1"><th scope="row">Lunes</th><td>6:30 – 22:00</td></tr>
+            <tr data-day="2"><th scope="row">Martes</th><td>6:30 – 22:00</td></tr>
+            <tr data-day="3"><th scope="row">Miércoles</th><td>6:30 – 22:00</td></tr>
+            <tr data-day="4"><th scope="row">Jueves</th><td>6:30 – 22:00</td></tr>
+            <tr data-day="5"><th scope="row">Viernes</th><td>6:30 – 21:00</td></tr>
+            <tr data-day="6"><th scope="row">Sábado</th><td>9:00 – 16:00</td></tr>
+            <tr data-day="0"><th scope="row">Domingo</th><td>9:00 – 14:00</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- PLANES — EDITAR: nombres, precios y beneficios reales -->
+    <section class="section planes" id="planes">
+      <div class="wrap">
+        <div class="head head--center">
+          <p class="eyebrow eyebrow--dark">Planes</p>
+          <h2 class="h2">Elige cómo quieres entrenar</h2>
+        </div>
+        <div class="plans">
+          <article class="plan">
+            <h3>Plan 8 clases</h3>
+            <p class="plan__price"><span>$</span>35.000<small>/mes</small></p>
+            <ul><li>8 clases grupales al mes</li><li>Todas las disciplinas</li><li>Reserva por WhatsApp</li></ul>
+            <a class="btn btn--outline js-wa" href="#" data-msg="Hola! Me interesa el Plan 8 clases.">Lo quiero</a>
+          </article>
+          <article class="plan plan--hi">
+            <span class="plan__badge">Más elegido</span>
+            <h3>Plan libre</h3>
+            <p class="plan__price"><span>$</span>45.000<small>/mes</small></p>
+            <ul><li>Clases ilimitadas</li><li>Acceso a sala de musculación</li><li>Evaluación inicial</li></ul>
+            <a class="btn js-wa" href="#" data-msg="Hola! Me interesa el Plan libre.">Lo quiero</a>
+          </article>
+          <article class="plan">
+            <h3>Clase suelta</h3>
+            <p class="plan__price"><span>$</span>7.000<small>/clase</small></p>
+            <ul><li>Una clase a elección</li><li>Ideal para probar</li><li>Sin compromiso</li></ul>
+            <a class="btn btn--outline js-wa" href="#" data-msg="Hola! Quiero reservar una clase suelta.">Reservar</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- EQUIPO — EDITAR: nombres, especialidades y fotos reales -->
+    <section class="section equipo" id="equipo">
+      <div class="wrap">
+        <div class="head">
+          <p class="eyebrow eyebrow--dark">Equipo</p>
+          <h2 class="h2">Profes que te conocen por tu nombre</h2>
+        </div>
+        <div class="team">
+          <article class="coach"><div class="coach__ph" aria-hidden="true">CR</div><h3>Camila Rojas</h3><p class="coach__role">Zumba · Baile urbano</p><p>Hace que la clase más dura parezca fiesta.</p></article>
+          <article class="coach"><div class="coach__ph" aria-hidden="true">MS</div><h3>Matías Soto</h3><p class="coach__role">Fuerza · Funcional</p><p>Técnica primero, progreso constante después.</p></article>
+          <article class="coach"><div class="coach__ph" aria-hidden="true">VP</div><h3>Valentina Pérez</h3><p class="coach__role">Pilates · Stretching</p><p>Movilidad y control para entrenar sin dolores.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ESPACIO -->
+    <section class="section espacio" aria-labelledby="esp-t">
+      <div class="wrap">
+        <div class="head"><p class="eyebrow">El club</p><h2 class="h2 h2--light" id="esp-t">Un espacio pensado para moverte</h2></div>
+        <div class="gallery">
+          <img src="assets/nosotros.webp" alt="Sala principal con máquinas y bancos" loading="lazy" width="1400" height="934">
+          <img src="assets/espacio-2.webp" alt="Zona de peso libre con discos de colores" loading="lazy" width="900" height="1350">
+          <img src="assets/espacio-3.webp" alt="Mancuernas ordenadas junto a los ventanales" loading="lazy" width="1200" height="800">
+          <img src="assets/espacio-4.webp" alt="Sala de entrenamiento con luz cálida" loading="lazy" width="900" height="1352">
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIOS — EDITAR: frases reales de alumnos -->
+    <section class="section testi" aria-labelledby="testi-t">
+      <div class="wrap testi__inner">
+        <p class="eyebrow">Testimonios</p>
+        <h2 class="h2 h2--light" id="testi-t">Lo que dice la comunidad</h2>
+        <div class="slider" aria-roledescription="carrusel">
+          <button class="slider__btn" data-dir="-1" aria-label="Testimonio anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+          <div class="slider__track" aria-live="polite">
+            <figure class="quote is-active"><blockquote>Llegué por la zumba y me quedé por la gente. Es el único lugar al que voy con ganas todas las semanas.</blockquote><figcaption>Francisca M.</figcaption></figure>
+            <figure class="quote"><blockquote>Los profes corrigen la técnica y se preocupan por ti. En tres meses noté un cambio enorme.</blockquote><figcaption>Rodrigo A.</figcaption></figure>
+            <figure class="quote"><blockquote>Queda a pasos de mi casa en Chicureo y los horarios me calzan perfecto con el trabajo.</blockquote><figcaption>Daniela V.</figcaption></figure>
+          </div>
+          <button class="slider__btn" data-dir="1" aria-label="Testimonio siguiente"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
+        </div>
+        <div class="dots" role="tablist" aria-label="Elegir testimonio"></div>
+      </div>
+    </section>
+
+    <!-- UBICACIÓN -->
+    <section class="section ubicacion" id="ubicacion">
+      <div class="wrap ubi__grid">
+        <div>
+          <p class="eyebrow eyebrow--dark">Ubicación</p>
+          <h2 class="h2">Te esperamos en Chicureo</h2>
+          <address class="contact">
+            <p><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-pin"/></svg>57 Paradero 24 ½, Carretera General San Martín, Chicureo, Colina, Región Metropolitana</p>
+            <p><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-mail"/></svg><a href="mailto:contacto@clubfama.cl">contacto@clubfama.cl</a></p>
+          </address>
+          <div class="hero__actions">
+            <a class="btn js-wa" href="#" data-msg="Hola Club Fama! Quiero más información."><svg aria-hidden="true" viewBox="0 0 24 24"><use href="#i-wa"/></svg>Escríbenos</a>
+            <a class="btn btn--outline" href="https://www.google.com/maps/search/?api=1&query=Club+Fama+Carretera+General+San+Mart%C3%ADn+Paradero+24+Chicureo+Colina" target="_blank" rel="noopener">Cómo llegar</a>
+          </div>
+        </div>
+        <div class="map">
+          <iframe title="Mapa de Club Fama en Chicureo" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=Carretera+General+San+Mart%C3%ADn+Paradero+24,+Chicureo,+Colina&output=embed"></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <img src="assets/logo-blanco.png" alt="Club Fama Dance & Fitness" width="180" height="80" loading="lazy">
+      <nav aria-label="Pie de página"><a href="#clases">Clases</a><a href="#horarios">Horarios</a><a href="#planes">Planes</a><a href="#ubicacion">Ubicación</a></nav>
+      <p class="footer__copy">© <span id="year"></span> Club Fama Dance &amp; Fitness · Chicureo</p>
+    </div>
+  </footer>
+
+  <a class="wa-float js-wa" href="#" data-msg="Hola Club Fama!" aria-label="Escríbenos por WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-wa"/></svg></a>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 18.2a8.2 8.2 0 01-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 01-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 00-.7.3 3 3 0 00-.9 2.2 5.2 5.2 0 001.1 2.7 11.8 11.8 0 004.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></symbol>
+    <symbol id="i-ig" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></g></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></g></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></g></symbol>
+  </svg>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
