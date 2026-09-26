@@ -1,7 +1,7 @@
 // EDITAR: número de WhatsApp (código país + número, sin + ni espacios) e Instagram.
 const CONFIG = {
   whatsapp: "56948869995",
-  instagram: "https://www.instagram.com/clubfama/",
+  instagram: "https://www.instagram.com/clubfamachicureo/",
 };
 
 // Horario: [apertura, cierre] en minutos desde medianoche; índice 0 = domingo.
