@@ -104,3 +104,24 @@ document.addEventListener("keydown", (e) => { if (e.key === "Escape") setMenu(fa
     io.observe(el);
   });
 })();
+
+// Carrusel de reseñas.
+(() => {
+  const track = document.querySelector(".reviews__grid");
+  if (!track) return;
+  const [prev, next] = document.querySelectorAll(".reviews__nav");
+  const step = () => (track.querySelector(".review")?.offsetWidth || 300) + 24;
+  const update = () => {
+    prev.disabled = track.scrollLeft < 8;
+    next.disabled = track.scrollLeft + track.clientWidth > track.scrollWidth - 8;
+  };
+  prev.addEventListener("click", () => track.scrollBy({ left: -step() }));
+  next.addEventListener("click", () => track.scrollBy({ left: step() }));
+  track.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight") { track.scrollBy({ left: step() }); e.preventDefault(); }
+    if (e.key === "ArrowLeft") { track.scrollBy({ left: -step() }); e.preventDefault(); }
+  });
+  track.addEventListener("scroll", update, { passive: true });
+  window.addEventListener("resize", update);
+  update();
+})();
