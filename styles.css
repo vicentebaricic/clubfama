@@ -235,7 +235,10 @@ svg { width: 1.2em; height: 1.2em; flex: none; }
 .fb-video-wrap--lg { max-width: 480px; }
 .fb-video-wrap iframe { display: block; width: 100%; height: 100%; }
 .testi__videos { display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; margin-top: 36px; }
-.testi__videos .fb-video-wrap { flex: 1 1 280px; margin: 0; }
+.testi__item { flex: 1 1 280px; max-width: 360px; margin: 0; display: grid; gap: 12px; justify-items: center; }
+.testi__item .fb-video-wrap { margin: 0; }
+.fb-link { color: var(--muted-light); font-size: 14px; text-underline-offset: 3px; }
+.fb-link:hover { color: var(--accent); }
 .sauna { margin: 64px 0; }
 .sauna__title { font: 700 30px/1 var(--display); text-transform: uppercase; color: var(--paper); margin-bottom: 24px; }
 .sauna__grid { display: grid; grid-template-columns: minmax(0, 360px) 1fr; gap: 24px; align-items: center; }
@@ -286,3 +289,5 @@ svg { width: 1.2em; height: 1.2em; flex: none; }
 .review__avatar { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: var(--accent); color: var(--ink); font: 800 20px/1 var(--display); }
 .reviews__actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 20px; }
 @media (max-width: 600px) { .reviews__actions .btn { flex: 1 1 100%; justify-content: center; } .reviews__num { font-size: 60px; } }
+
+.espacio .fb-video-wrap--lg + .gallery { margin-top: 40px; }
