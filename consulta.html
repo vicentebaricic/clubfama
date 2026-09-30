@@ -1,0 +1,499 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b0b0d">
+<meta name="robots" content="noindex">
+<title>Club Fama · Cuéntame de tu club</title>
+<style>
+  :root{
+    --bg:#0b0b0d;
+    --card:#151519;
+    --line:#2a2a31;
+    --text:#f4f4f6;
+    --muted:#a3a3ad;
+    --accent:#00b0ea;      /* celeste del logo */
+    --accent-text:#04121a; /* texto oscuro para que se lea sobre el celeste */
+    --radius:14px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+  header{padding:14px 16px 12px;text-align:center;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#101014 0%,var(--bg) 100%)}
+  header img{display:block;margin:0 auto;height:clamp(84px,22vw,120px);width:auto;max-width:100%;object-fit:contain}
+  .wordmark{font-weight:800;letter-spacing:.12em;font-size:1.3rem}
+  .wordmark small{display:block;color:var(--accent);font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;font-weight:700}
+  main{max-width:680px;margin:0 auto;padding:32px 16px 72px}
+  .eyebrow{color:var(--accent);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;margin:0 0 8px}
+  h1{font-size:clamp(1.7rem,6vw,2.4rem);line-height:1.15;margin:0 0 12px}
+  .lead{color:var(--muted);margin:0 0 8px}
+  .tiempo{display:inline-block;margin:8px 0 28px;padding:6px 12px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:.85rem}
+
+  /* Encabezado de cada parte */
+  .parte{margin:36px 0 16px;padding-bottom:12px;border-bottom:2px solid var(--accent)}
+  .parte .tag{display:inline-block;background:var(--accent);color:var(--accent-text);font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:999px;margin-bottom:8px}
+  .parte .tag.gris{background:transparent;border:1px solid var(--accent);color:var(--accent)}
+  .parte h2{margin:0 0 4px;font-size:1.4rem;line-height:1.2}
+  .parte p{margin:0;color:var(--muted);font-size:.92rem}
+
+  fieldset{border:1px solid var(--line);background:var(--card);border-radius:var(--radius);padding:22px 18px 8px;margin:0 0 20px}
+  legend{padding:0 8px;font-weight:700;font-size:1.05rem}
+  .field{margin:0 0 20px}
+  label.q,.q{display:block;font-weight:600;margin-bottom:4px}
+  .hint{display:block;color:var(--muted);font-size:.85rem;margin-bottom:8px}
+  .opt{color:var(--muted);font-weight:400;font-size:.8rem}
+  input[type=text],input[type=email],input[type=tel],input[type=url],textarea,select{
+    width:100%;background:#0f0f12;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font:inherit;
+  }
+  textarea{min-height:88px;resize:vertical}
+  input:focus,textarea:focus,select:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:transparent}
+  .pills{display:flex;flex-wrap:wrap;gap:8px}
+  .pills input{position:absolute;opacity:0;pointer-events:none}
+  .pills label{cursor:pointer;padding:9px 14px;border:1px solid var(--line);border-radius:999px;background:#0f0f12;font-size:.92rem;transition:.15s}
+  .pills input:checked + label{background:var(--accent);border-color:var(--accent);color:var(--accent-text)}
+  .pills input:focus-visible + label{outline:2px solid var(--accent);outline-offset:2px}
+  .checks{display:grid;gap:8px}
+  .checks label{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#0f0f12;cursor:pointer}
+  .checks input{margin-top:3px;accent-color:var(--accent);width:18px;height:18px;flex:none}
+  .checks small{display:block;color:var(--muted)}
+  .row{display:grid;gap:14px}
+  @media(min-width:560px){.row.two{grid-template-columns:1fr 1fr}}
+  button[type=submit]{width:100%;background:var(--accent);color:var(--accent-text);border:0;border-radius:12px;padding:16px;font:inherit;font-weight:700;font-size:1.05rem;cursor:pointer}
+  button[disabled]{opacity:.6;cursor:wait}
+  .note{color:var(--muted);font-size:.85rem;text-align:center;margin-top:14px}
+  .hp{position:absolute;left:-9999px}
+  [hidden]{display:none !important}
+  #ok,#err{display:none;border-radius:var(--radius);padding:22px;margin-top:20px;text-align:center}
+  #ok{background:var(--card);border:1px solid var(--accent)}
+  #err{background:#2a1215;border:1px solid #6b1f27}
+  #ok h2{margin:0 0 6px}
+</style>
+</head>
+<body>
+<header>
+  <img src="assets/logo-blanco.png" alt="Club Fama Dance & Fitness"
+       onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+  <span class="wordmark" style="display:none">CLUB FAMA <small>Dance &amp; Fitness</small></span>
+</header>
+
+<main>
+  <p class="eyebrow">Propuesta a la medida</p>
+  <h1>Cuéntame de tu club</h1>
+  <p class="lead">Con estas respuestas armo una propuesta personalizada, sin dejar nada fuera y sin sorpresas después.</p>
+  <span class="tiempo">⏱ Toma unos 5 a 8 minutos · Lo que no sepas, déjalo en blanco</span>
+
+  <form id="form" action="https://formspree.io/f/mljdvlyp" method="POST" novalidate>
+    <!-- Antispam -->
+    <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <input type="hidden" name="_subject" value="Club Fama: respuestas de levantamiento">
+
+    <!-- ============ DATOS GENERALES ============ -->
+    <fieldset>
+      <legend>Sobre ti y el club</legend>
+
+      <div class="row two">
+        <div class="field">
+          <label class="q" for="nombre">Tu nombre</label>
+          <input id="nombre" name="nombre" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label class="q" for="contacto">WhatsApp o correo</label>
+          <input id="contacto" name="contacto" type="text" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="q" for="planes">¿Cuáles son hoy sus planes y precios reales?</label>
+        <span class="hint">En el prototipo puse valores de ejemplo. Puedes pegar un texto o el link donde los publican.</span>
+        <textarea id="planes" name="planes_y_precios"></textarea>
+      </div>
+
+      <div class="row two">
+        <div class="field">
+          <label class="q" for="socios">Socios activos <span class="opt">(aprox.)</span></label>
+          <input id="socios" name="socios_activos" type="text" inputmode="numeric" placeholder="Ej: 250">
+        </div>
+        <div class="field">
+          <label class="q" for="capacidad">¿Cuántos socios más podrían recibir?</label>
+          <input id="capacidad" name="capacidad_extra" type="text" placeholder="Ej: 100 más">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="q" for="rentable">¿Cuál es su plan o servicio más rentable?</label>
+        <input id="rentable" name="servicio_mas_rentable" type="text">
+      </div>
+
+      <div class="field">
+        <label class="q" for="permanencia">¿Cuánto suele quedarse un socio?</label>
+        <select id="permanencia" name="permanencia_socio">
+          <option value="">Elige una opción</option>
+          <option>Menos de 3 meses</option>
+          <option>3 a 6 meses</option>
+          <option>6 a 12 meses</option>
+          <option>Más de un año</option>
+          <option>No lo sé</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <span class="q">¿Las clases tienen cupo limitado?</span>
+        <div class="pills">
+          <input type="radio" name="cupos" id="cupos1" value="Sí"><label for="cupos1">Sí</label>
+          <input type="radio" name="cupos" id="cupos2" value="No"><label for="cupos2">No</label>
+          <input type="radio" name="cupos" id="cupos3" value="Algunas"><label for="cupos3">Algunas</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="q">Tu meta principal para los próximos 3 a 6 meses</span>
+        <div class="pills">
+          <input type="radio" name="meta" id="m1" value="Más socios nuevos"><label for="m1">Más socios nuevos</label>
+          <input type="radio" name="meta" id="m2" value="Más clases de prueba"><label for="m2">Más clases de prueba</label>
+          <input type="radio" name="meta" id="m3" value="Llenar horarios con poca demanda"><label for="m3">Llenar horarios flojos</label>
+          <input type="radio" name="meta" id="m4" value="Que los socios no se vayan"><label for="m4">Retener socios</label>
+          <input type="radio" name="meta" id="m5" value="Otra"><label for="m5">Otra</label>
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- ============ PARTE 1: WEB ============ -->
+    <div class="parte">
+      <span class="tag">Parte 1</span>
+      <h2>Página web</h2>
+      <p>Lo que necesito saber para dejar el sitio como lo imaginas.</p>
+    </div>
+
+    <fieldset>
+      <legend>Sobre el prototipo</legend>
+
+      <div class="field">
+        <label class="q" for="proto">¿Qué te gustó del prototipo y qué cambiarías o agregarías?</label>
+        <textarea id="proto" name="prototipo_opinion"></textarea>
+      </div>
+
+      <div class="field">
+        <label class="q" for="wsp_num">Número de WhatsApp del club para los botones de la web</label>
+        <span class="hint">Con código de país. Ej: +56 9 1234 5678</span>
+        <input id="wsp_num" name="whatsapp_botones" type="tel" inputmode="tel">
+      </div>
+
+      <div class="field">
+        <label class="q" for="clases">Las clases, profes y horarios del prototipo son de ejemplo. ¿Me pasas los reales?</label>
+        <span class="hint">Puedes pegar un texto o un link, o decirme que me los mandas por WhatsApp.</span>
+        <textarea id="clases" name="clases_profes_horarios"></textarea>
+      </div>
+
+      <div class="field">
+        <span class="q">¿Están correctos los horarios de apertura y la dirección que puse?</span>
+        <div class="pills">
+          <input type="radio" name="horarios_ok" id="h1" value="Sí, están correctos"><label for="h1">Sí, están correctos</label>
+          <input type="radio" name="horarios_ok" id="h2" value="Hay que corregir"><label for="h2">Hay que corregir</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="q">¿Tienes los textos listos (descripción de clases, planes, equipo)?</span>
+        <div class="pills">
+          <input type="radio" name="textos" id="t1" value="Sí, están listos"><label for="t1">Sí, están listos</label>
+          <input type="radio" name="textos" id="t2" value="Algunos"><label for="t2">Algunos</label>
+          <input type="radio" name="textos" id="t3" value="No, necesito que los redacte"><label for="t3">No, que los redacte tú</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="q">¿Para cuándo te gustaría tener la web?</span>
+        <div class="pills">
+          <input type="radio" name="plazo_web" id="pz1" value="Lo antes posible"><label for="pz1">Lo antes posible</label>
+          <input type="radio" name="plazo_web" id="pz2" value="En 1 mes"><label for="pz2">En 1 mes</label>
+          <input type="radio" name="plazo_web" id="pz3" value="Sin apuro"><label for="pz3">Sin apuro</label>
+          <input type="radio" name="plazo_web" id="pz4" value="Tengo una fecha"><label for="pz4">Tengo una fecha</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="q" for="fecha">Si tienes una fecha en mente, ¿cuál? <span class="opt">(opcional)</span></label>
+        <input id="fecha" name="fecha_deseada" type="text" placeholder="Ej: antes de marzo, inicio de temporada">
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Qué te gustaría que tenga la web</legend>
+
+      <div class="field">
+        <div class="checks">
+          <label><input type="checkbox" name="web_quiere" value="Solo información y botón a WhatsApp"><span>Solo información y botón a WhatsApp<small>Lo que ya ves en el prototipo</small></span></label>
+          <label><input type="checkbox" name="web_quiere" value="Reserva de clases de prueba"><span>Reserva de clases de prueba en línea</span></label>
+          <label><input type="checkbox" name="web_quiere" value="Pago online"><span>Pago online de planes o clases sueltas</span></label>
+          <label><input type="checkbox" name="web_quiere" value="Venta de productos"><span>Venta de productos (tipo tienda)</span></label>
+          <label><input type="checkbox" name="web_quiere" value="Más páginas"><span>Más páginas además de esta<small>Por ejemplo, una por clase o un blog</small></span></label>
+          <label><input type="checkbox" name="web_quiere" value="No estoy seguro"><span>No estoy seguro, recomiéndame</span></label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="q" for="web_otro">¿Algo más que te gustaría en la web? <span class="opt">(opcional)</span></label>
+        <textarea id="web_otro" name="web_otro"></textarea>
+      </div>
+
+      <div class="field">
+        <span class="q">¿Tienes un presupuesto en mente para la web? <span class="opt">(opcional)</span></span>
+        <div class="pills">
+          <input type="radio" name="presupuesto_web" id="pw1" value="Prefiero que me propongas opciones"><label for="pw1">Prefiero que me propongas opciones</label>
+          <input type="radio" name="presupuesto_web" id="pw2" value="Menos de $600.000"><label for="pw2">Menos de $600.000</label>
+          <input type="radio" name="presupuesto_web" id="pw3" value="$600.000 a $1.000.000"><label for="pw3">$600.000 – $1.000.000</label>
+          <input type="radio" name="presupuesto_web" id="pw4" value="Más de $1.000.000"><label for="pw4">Más de $1.000.000</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="q">¿Tienen dominio propio (por ejemplo, clubfama.cl)?</span>
+        <div class="pills">
+          <input type="radio" name="dominio" id="dom1" value="Sí"><label for="dom1">Sí</label>
+          <input type="radio" name="dominio" id="dom2" value="No"><label for="dom2">No</label>
+          <input type="radio" name="dominio" id="dom3" value="No sé"><label for="dom3">No sé</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="q" for="dominio_quien">¿Quién lo administra? <span class="opt">(opcional)</span></label>
+        <input id="dominio_quien" name="dominio_quien" type="text" placeholder="Ej: yo, un proveedor, no sé">
+      </div>
+
+      <div class="field">
+        <span class="q">¿Tienen fotos y videos propios de buena calidad?</span>
+        <div class="pills">
+          <input type="radio" name="material" id="f1" value="Sí"><label for="f1">Sí</label>
+          <input type="radio" name="material" id="f2" value="Algunos"><label for="f2">Algunos</label>
+          <input type="radio" name="material" id="f3" value="No"><label for="f3">No</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="q">¿Dónde están hoy en internet?</span>
+        <div class="pills">
+          <input type="checkbox" name="canales" id="c1" value="Instagram"><label for="c1">Instagram</label>
+          <input type="checkbox" name="canales" id="c2" value="Facebook"><label for="c2">Facebook</label>
+          <input type="checkbox" name="canales" id="c3" value="Google Business Profile"><label for="c3">Ficha de Google</label>
+          <input type="checkbox" name="canales" id="c4" value="WhatsApp"><label for="c4">WhatsApp</label>
+          <input type="checkbox" name="canales" id="c5" value="Web actual"><label for="c5">Web actual</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="q" for="links">Links de sus redes <span class="opt">(opcional)</span></label>
+        <textarea id="links" name="links_redes" placeholder="Instagram, Facebook, etc."></textarea>
+      </div>
+
+      <div class="field">
+        <label class="q" for="competencia">¿Qué gimnasios o estudios ves como competencia en la zona? <span class="opt">(opcional)</span></label>
+        <textarea id="competencia" name="competencia"></textarea>
+      </div>
+    </fieldset>
+
+    <!-- ============ PARTE 2: ANUNCIOS ============ -->
+    <div class="parte">
+      <span class="tag gris">Parte 2 · Opcional</span>
+      <h2>Meta Ads / Google Ads <span class="opt">(si aplica)</span></h2>
+      <p>Si te interesa que también cotice anuncios para atraer socios nuevos. Si no, salta esta parte.</p>
+    </div>
+
+    <fieldset>
+      <legend>¿Te interesa cotizar anuncios?</legend>
+
+      <div class="field">
+        <div class="pills">
+          <input type="radio" name="interes_anuncios" id="i1" value="Sí, quiero cotizarlo"><label for="i1">Sí, quiero cotizarlo</label>
+          <input type="radio" name="interes_anuncios" id="i2" value="Tal vez, cuéntame más"><label for="i2">Tal vez, cuéntame más</label>
+          <input type="radio" name="interes_anuncios" id="i3" value="No por ahora"><label for="i3">No por ahora</label>
+        </div>
+        <span class="hint" style="margin-top:10px">Si marcas "Sí" o "Tal vez", aparecerán unas preguntas más. Si marcas "No por ahora", sigue directo al final.</span>
+      </div>
+    </fieldset>
+
+    <div id="anuncios" hidden>
+      <fieldset>
+        <legend>Sobre los anuncios</legend>
+
+        <div class="field">
+          <span class="q">¿Qué te interesa?</span>
+          <div class="checks">
+            <label><input type="checkbox" name="anuncios_quiere" value="Meta Ads (Instagram/Facebook)"><span>Anuncios en Instagram y Facebook (Meta Ads)</span></label>
+            <label><input type="checkbox" name="anuncios_quiere" value="Google Ads"><span>Anuncios en Google (Google Ads)</span></label>
+            <label><input type="checkbox" name="anuncios_quiere" value="Respuestas automáticas WhatsApp"><span>Respuestas automáticas por WhatsApp o recordatorios a socios</span></label>
+            <label><input type="checkbox" name="anuncios_quiere" value="No sé, recomiéndame"><span>No sé, recomiéndame</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <span class="q">¿Qué contaría como un buen resultado?</span>
+          <div class="pills">
+            <input type="checkbox" name="resultado" id="r1" value="Mensajes por WhatsApp"><label for="r1">Mensajes por WhatsApp</label>
+            <input type="checkbox" name="resultado" id="r2" value="Clases de prueba agendadas"><label for="r2">Clases de prueba agendadas</label>
+            <input type="checkbox" name="resultado" id="r3" value="Nuevas inscripciones"><label for="r3">Nuevas inscripciones</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q" for="meta_num">Si tienes una cifra en mente, cuéntala <span class="opt">(opcional)</span></label>
+          <input id="meta_num" name="meta_cifra" type="text" placeholder="Ej: 30 socios nuevos al mes">
+        </div>
+
+        <div class="field">
+          <span class="q">¿Han hecho anuncios en Meta o Google antes?</span>
+          <div class="pills">
+            <input type="radio" name="anuncios_previos" id="a1" value="Nunca"><label for="a1">Nunca</label>
+            <input type="radio" name="anuncios_previos" id="a2" value="Sí, funcionaron bien"><label for="a2">Sí, funcionaron bien</label>
+            <input type="radio" name="anuncios_previos" id="a3" value="Sí, no funcionaron"><label for="a3">Sí, no funcionaron</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q" for="anuncios_detalle">Si hicieron, ¿cómo les fue? <span class="opt">(opcional)</span></label>
+          <textarea id="anuncios_detalle" name="anuncios_detalle"></textarea>
+        </div>
+
+        <div class="field">
+          <span class="q">¿El WhatsApp del club es WhatsApp Business?</span>
+          <div class="pills">
+            <input type="radio" name="wsp_business" id="w1" value="Sí"><label for="w1">Sí</label>
+            <input type="radio" name="wsp_business" id="w2" value="No"><label for="w2">No</label>
+            <input type="radio" name="wsp_business" id="w3" value="No sé"><label for="w3">No sé</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q" for="atiende">¿Quién responde los mensajes y en qué horarios?</label>
+          <input id="atiende" name="quien_atiende" type="text">
+        </div>
+
+        <div class="field">
+          <label class="q" for="mensajes">¿Cuántos mensajes o consultas reciben al mes? <span class="opt">(aprox.)</span></label>
+          <input id="mensajes" name="consultas_mes" type="text" placeholder="Ej: 60">
+        </div>
+
+        <div class="field">
+          <label class="q" for="gestion">¿Cómo llevan inscripciones y pagos?</label>
+          <span class="hint">Planilla, software de gimnasio, transferencia, otro.</span>
+          <input id="gestion" name="gestion_inscripciones" type="text">
+        </div>
+
+        <div class="field">
+          <label class="q" for="ganancia">Aproximadamente, ¿cuánto te deja de ganancia un socio nuevo al mes?</label>
+          <span class="hint">Después de tus costos. Con un rango me basta: me sirve para calcular cuánto conviene invertir en anuncios.</span>
+          <input id="ganancia" name="ganancia_por_socio" type="text" placeholder="Ej: entre $20.000 y $30.000">
+        </div>
+
+        <div class="field">
+          <label class="q" for="comunas">¿De qué comunas o sectores vienen la mayoría de sus socios?</label>
+          <input id="comunas" name="comunas_socios" type="text" placeholder="Ej: Chicureo, Colina, Lo Pinto">
+        </div>
+
+        <div class="field">
+          <label class="q" for="prueba">¿La clase de prueba es gratis? ¿Tienen promociones vigentes?</label>
+          <textarea id="prueba" name="clase_prueba_promos"></textarea>
+        </div>
+
+        <div class="field">
+          <span class="q">¿Tienen acceso de administrador a su Facebook e Instagram?</span>
+          <span class="hint">Los anuncios se crean desde ahí y quedan a nombre del club.</span>
+          <div class="pills">
+            <input type="radio" name="acceso_redes" id="ar1" value="Sí"><label for="ar1">Sí</label>
+            <input type="radio" name="acceso_redes" id="ar2" value="No"><label for="ar2">No</label>
+            <input type="radio" name="acceso_redes" id="ar3" value="No sé"><label for="ar3">No sé</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <span class="q">¿Cuánto podrías invertir al mes en publicidad?</span>
+          <span class="hint">Es aparte de mis honorarios. Si no lo tienes claro, te propongo opciones.</span>
+          <div class="pills">
+            <input type="radio" name="presupuesto_pauta" id="p1" value="Menos de $200.000"><label for="p1">Menos de $200.000</label>
+            <input type="radio" name="presupuesto_pauta" id="p2" value="$200.000 a $400.000"><label for="p2">$200.000 – $400.000</label>
+            <input type="radio" name="presupuesto_pauta" id="p3" value="Más de $400.000"><label for="p3">Más de $400.000</label>
+            <input type="radio" name="presupuesto_pauta" id="p4" value="Aún no lo sé"><label for="p4">Aún no lo sé</label>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+    <!-- ============ CIERRE ============ -->
+    <fieldset>
+      <legend>Para cerrar</legend>
+
+      <div class="field">
+        <span class="q">¿Facturan con IVA o emiten boleta?</span>
+        <div class="pills">
+          <input type="radio" name="documento" id="d1" value="Factura con IVA"><label for="d1">Factura con IVA</label>
+          <input type="radio" name="documento" id="d2" value="Boleta"><label for="d2">Boleta</label>
+          <input type="radio" name="documento" id="d3" value="No sé"><label for="d3">No sé</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="q" for="extra">¿Algo más que deba saber? <span class="opt">(opcional)</span></label>
+        <textarea id="extra" name="comentarios"></textarea>
+      </div>
+    </fieldset>
+
+    <button type="submit" id="btn">Enviar respuestas</button>
+    <p class="note">Responder no te compromete a nada. Las condiciones del trabajo las vemos en la propuesta.<br>Te la envío en 2 a 3 días hábiles después de recibir tus respuestas.</p>
+
+    <div id="ok" role="status">
+      <h2>¡Gracias! 🙌</h2>
+      <p>Recibí tus respuestas. Te escribo pronto con la propuesta.</p>
+    </div>
+    <div id="err" role="alert">
+      <p>No pude enviar el formulario. Intenta de nuevo o escríbeme directo por WhatsApp.</p>
+    </div>
+  </form>
+</main>
+
+<script>
+(function(){
+  var form=document.getElementById('form'),btn=document.getElementById('btn'),ok=document.getElementById('ok'),err=document.getElementById('err'),anuncios=document.getElementById('anuncios');
+
+  // Muestra las preguntas de anuncios solo si hay interés.
+  // Al ocultarlas se desactivan, así no se envían respuestas viejas.
+  function setAnuncios(show){
+    anuncios.hidden=!show;
+    anuncios.querySelectorAll('input,textarea,select').forEach(function(el){el.disabled=!show;});
+  }
+  setAnuncios(false);
+  form.querySelectorAll('input[name="interes_anuncios"]').forEach(function(r){
+    r.addEventListener('change',function(){
+      setAnuncios(r.value!=='No por ahora');
+    });
+  });
+
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    err.style.display='none';
+    if(!form.nombre.value.trim()||!form.contacto.value.trim()){
+      (form.nombre.value.trim()?form.contacto:form.nombre).focus();
+      err.textContent='Necesito al menos tu nombre y un medio de contacto.';
+      err.style.display='block';
+      return;
+    }
+    btn.disabled=true;btn.textContent='Enviando…';
+    // Junta los checkboxes con el mismo nombre en un solo texto
+    var fd=new FormData(form),data={};
+    fd.forEach(function(v,k){data[k]=data[k]?data[k]+', '+v:v;});
+    fetch(form.action,{method:'POST',headers:{'Accept':'application/json','Content-Type':'application/json'},body:JSON.stringify(data)})
+      .then(function(r){
+        if(!r.ok)throw new Error();
+        form.querySelectorAll('fieldset,.parte,#anuncios,button,.note').forEach(function(el){el.style.display='none';});
+        ok.style.display='block';
+        ok.scrollIntoView({behavior:'smooth',block:'center'});
+      })
+      .catch(function(){
+        err.textContent='No pude enviar el formulario. Intenta de nuevo o escríbeme directo por WhatsApp.';
+        err.style.display='block';
+        btn.disabled=false;btn.textContent='Enviar respuestas';
+      });
+  });
+})();
+</script>
+</body>
+</html>
